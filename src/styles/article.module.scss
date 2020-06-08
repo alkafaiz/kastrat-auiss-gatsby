@@ -1,0 +1,14 @@
+@import "./global-variable";
+
+.articleInfo {
+  color: $text-secondary;
+  a {
+    color: $text-primary;
+    text-decoration: none;
+  }
+}
+
+.section {
+  text-align: justify;
+  line-height: 1.73;
+}

@@ -3,7 +3,7 @@ import { graphql, Link } from "gatsby"
 
 import SEO from "../components/seo"
 import Layout from "../components/layout"
-import { transformToSlug } from "../utils/general.util"
+import ArticleAuthorCard from "../components/article-author-card"
 
 export const query = graphql`
   query UserTemplate($id: String!) {
@@ -14,6 +14,15 @@ export const query = graphql`
         id
         title
         content
+        excerpt
+        published_date
+        image {
+          childImageSharp {
+            fixed(width: 350, height: 200) {
+              ...GatsbyImageSharpFixed
+            }
+          }
+        }
       }
     }
   }
@@ -25,19 +34,23 @@ const AuthorTemplate = ({ data }) => {
     <Layout>
       <SEO title={`${author.username}'s articles`} />
 
-      <h1>{author.username}</h1>
+      <h1>{`${author.username}'s article`}</h1>
 
-      <ul>
-        {author.articles.map(article => (
-          <li key={article.id}>
-            <h2>
-              <Link to={`/${transformToSlug(article.title)}`}>
-                {article.title}
-              </Link>
-            </h2>
-            <p>{article.content}</p>
-          </li>
-        ))}
+      <ul style={{ margin: 0 }}>
+        {author.articles.map(article => {
+          const { id, title, excerpt, published_date, content, image } = article
+          return (
+            <li key={id} style={{ listStyle: "none", margin: 0, padding: 0 }}>
+              <ArticleAuthorCard
+                title={title}
+                image={image.childImageSharp.fixed}
+                published_date={published_date}
+                content={content}
+                excerpt={excerpt}
+              />
+            </li>
+          )
+        })}
       </ul>
     </Layout>
   )

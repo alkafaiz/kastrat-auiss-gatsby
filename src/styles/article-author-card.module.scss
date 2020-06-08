@@ -1,0 +1,53 @@
+@import "./global-variable";
+
+.card {
+  background-color: #fff;
+  width: 100%;
+  height: 200px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: $box-shadow-1;
+  margin-bottom: 1.2em !important;
+
+  a {
+    color: #000;
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+.content {
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+  width: -webkit-fill-available;
+  h2 {
+    font-size: 1em;
+    line-height: 1.3em;
+    color: $text-primary;
+    font-family: $font-family;
+  }
+  p {
+    font-size: 0.7em;
+    line-height: 1.6em;
+    color: $text-secondary;
+  }
+}
+
+.footer {
+  margin-top: auto;
+  margin-bottom: 0;
+  .author,
+  .moment {
+    margin-bottom: 0;
+    font-size: 0.7em;
+  }
+  .author {
+    color: $text-primary;
+  }
+  .moment {
+    color: $text-secondary;
+  }
+}

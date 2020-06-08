@@ -6,13 +6,12 @@ import { Link } from "gatsby"
 import readTimeEstimate from "read-time-estimate"
 
 import { transformToSlug } from "../utils/general.util"
-import style from "../styles/article-card.module.scss"
+import style from "../styles/article-author-card.module.scss"
 
-const ArticleCard = ({
+const ArticleAuthorCard = ({
   title,
   image,
   excerpt,
-  author,
   published_date,
   content,
 }) => {
@@ -31,7 +30,6 @@ const ArticleCard = ({
           <p>{excerpt}</p>
 
           <div className={style.footer}>
-            <p className={style.author}>{author}</p>
             <p className={style.moment}>
               <Moment format="MMM D">{published_date}</Moment> &bull;{" "}
               {readDurationInMinute} min read
@@ -42,18 +40,18 @@ const ArticleCard = ({
     </div>
   )
 }
-ArticleCard.propTypes = {
+ArticleAuthorCard.propTypes = {
   title: PropTypes.string,
   image: PropTypes.object,
   excerpt: PropTypes.string,
   content: PropTypes.string,
 }
 
-ArticleCard.defaultProps = {
+ArticleAuthorCard.defaultProps = {
   title: ``,
   image: ``,
   excerpt: ``,
   content: ``,
 }
 
-export default ArticleCard
+export default ArticleAuthorCard

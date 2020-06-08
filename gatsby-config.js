@@ -8,7 +8,9 @@ module.exports = {
     {
       resolve: `gatsby-source-strapi`,
       options: {
-        apiURL: `https://kastrat-auiss-staging.herokuapp.com`,
+        apiURL: process.env.DEPLOY_URL
+          ? `https://kastrat-auiss-staging.herokuapp.com`
+          : `http://localhost:1338`,
         queryLimit: 1000, // Default to 100
         contentTypes: [`article`, `user`],
       },
@@ -33,7 +35,7 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/auiss-icon.png`, // This path is relative to the root of the site.
       },
     },
     {

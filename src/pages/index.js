@@ -11,22 +11,20 @@ const IndexPage = ({ data }) => (
     <SEO title="Home" description="some descriptions" />
     <div className={style.index}>
       {data.allStrapiArticle.edges.map(({ node }) => {
-        const { title, image, author, created_at, content } = node
+        const { title, image, author, published_date, content, excerpt } = node
         return (
           <ArticleCard
             key={node.id}
             title={title}
             image={image.childImageSharp.fixed}
             author={author.username}
-            created_at={created_at}
+            published_date={published_date}
             content={content}
-            excerpt="Berasal dari Bahasa Latin, corona secara harafiah berarti “mahkota”. Mungkin kalian akan berpikir kita akan membahas mengenai kerajaan yang baru-baru ini sedang viral, namun kali ini kita tidak (belum) membahas mengenai itu. Corona yang satu ini jelas bukan merupakan “mahkota” yang mau kita kenakan."
+            excerpt={excerpt}
           />
         )
       })}
     </div>
-    <Link to="/page-2/">Go to page 2</Link> <br />
-    <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
   </Layout>
 )
 
@@ -41,6 +39,8 @@ export const pageQuery = graphql`
           id
           title
           content
+          excerpt
+          published_date
           image {
             childImageSharp {
               fixed(width: 300, height: 170) {
@@ -52,7 +52,6 @@ export const pageQuery = graphql`
             id
             username
           }
-          created_at
         }
       }
     }
