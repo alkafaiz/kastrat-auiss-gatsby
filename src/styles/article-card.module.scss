@@ -1,0 +1,49 @@
+@import "./global-variable";
+
+.card {
+  background-color: #fff;
+  width: 300px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: $box-shadow-1;
+  margin-bottom: 16px;
+
+  a {
+    color: #000;
+    text-decoration: none;
+  }
+}
+
+.content {
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  height: 300px;
+  h2 {
+    font-size: 0.8em;
+    line-height: 1.3em;
+    color: $text-primary;
+    margin-bottom: 10px;
+    font-family: $font-family;
+  }
+  p {
+    font-size: 0.6em;
+    line-height: 1.6em;
+    color: $text-secondary;
+  }
+}
+
+.footer {
+  margin-top: auto;
+  .author,
+  .moment {
+    margin-bottom: 0;
+    font-size: 0.7em;
+  }
+  .author {
+    color: $text-primary;
+  }
+  .moment {
+    color: $text-secondary;
+  }
+}
