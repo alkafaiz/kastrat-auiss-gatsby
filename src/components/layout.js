@@ -29,7 +29,7 @@ const Layout = ({ children }) => {
   const emojiSupport = text =>
     text.value.replace(/:\w+:/gi, name => emoji.getUnicode(name))
 
-  const footerText = `© ${new Date().getFullYear()}, Made with :heart: by [alkafaiz](https://www.instagram.com/alkafaiz)`
+  const footerText = `© ${new Date().getFullYear()}, Made with :heart: by [alkafaiz](https://www.instagram.com/alkafaiz) for [auiss](https://www.instagram.com/auiss_official)`
   return (
     <div className={style.body}>
       <Header siteTitle={data.site.siteMetadata.title} />

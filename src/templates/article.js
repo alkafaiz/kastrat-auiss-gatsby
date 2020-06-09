@@ -38,6 +38,8 @@ const Article = ({ data }) => {
   React.useEffect(() => {
     function trackScroll(params) {
       console.log(params.path[1].scrollY)
+
+      // CONTINUE: track scroll to bottom to appear scroll top button
     }
 
     document.addEventListener("scroll", trackScroll)

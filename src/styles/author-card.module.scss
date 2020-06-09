@@ -2,18 +2,16 @@
 
 .card {
   background-color: #fff;
-  width: 100%;
-  height: 200px;
+  width: 300px;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: $box-shadow-1;
-  margin-bottom: 1.2em !important;
+  margin-bottom: 16px;
+  margin-right: 1.3em;
 
   a {
     color: #000;
     text-decoration: none;
-    display: flex;
-    flex-direction: row;
   }
 }
 
@@ -21,35 +19,28 @@
   padding: 1em;
   display: flex;
   flex-direction: column;
-  height: 200px;
-  width: -webkit-fill-available;
+  height: 140px;
+  //height: fit-content;
   h2 {
-    font-size: 1em;
+    font-size: 0.8em;
     line-height: 1.3em;
     color: $text-primary;
+    margin-bottom: 10px;
     font-family: $font-family;
-    margin-bottom: 0.4em;
   }
   p {
-    margin-bottom: 0;
-    font-size: 0.7em;
+    font-size: 0.6em;
     line-height: 1.6em;
+    margin-bottom: 0;
     color: $text-secondary;
   }
 }
 
 .footer {
   margin-top: auto;
-  margin-bottom: 0;
-  .author,
-  .moment {
+  .totalArticle {
     margin-bottom: 0;
     font-size: 0.7em;
-  }
-  .author {
-    color: $text-primary;
-  }
-  .moment {
     color: $text-secondary;
   }
 }

@@ -13,12 +13,12 @@ import Img from "gatsby-image"
  * - `useStaticQuery`: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-const Logo = () => {
+const DefaultProfile = () => {
   const data = useStaticQuery(graphql`
     query {
-      placeholderImage: file(relativePath: { eq: "auiss-logo.png" }) {
+      placeholderImage: file(relativePath: { eq: "default-profile.jpg" }) {
         childImageSharp {
-          fixed(height: 45) {
+          fixed(width: 130, height: 130) {
             ...GatsbyImageSharpFixed
           }
         }
@@ -29,4 +29,4 @@ const Logo = () => {
   return <Img fixed={data.placeholderImage.childImageSharp.fixed} />
 }
 
-export { Logo }
+export default DefaultProfile
