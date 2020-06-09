@@ -4,6 +4,7 @@ import { graphql, Link } from "gatsby"
 import ReactMarkdown from "react-markdown"
 import Moment from "react-moment"
 import Img from "gatsby-image"
+import { DiscussionEmbed } from "disqus-react"
 
 import SEO from "../components/seo"
 import Layout from "../components/layout"
@@ -34,6 +35,10 @@ export const query = graphql`
 
 const Article = ({ data }) => {
   const article = data.strapiArticle
+  const disqusConfig = {
+    shortname: process.env.GATSBY_DISQUS_NAME,
+    config: { identifier: transformToSlug(article.title) },
+  }
 
   React.useEffect(() => {
     function trackScroll(params) {
@@ -81,6 +86,8 @@ const Article = ({ data }) => {
             </div>
           </div>
         </div>
+        <br />
+        <DiscussionEmbed {...disqusConfig} />
       </div>
     </Layout>
   )
