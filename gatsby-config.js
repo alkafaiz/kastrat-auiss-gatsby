@@ -10,7 +10,7 @@ module.exports = {
       options: {
         apiURL: process.env.DEPLOY_URL
           ? `https://kastrat-auiss-staging.herokuapp.com`
-          : `http://localhost:1338`,
+          : `http://localhost:1337`,
         queryLimit: 1000, // Default to 100
         contentTypes: [`article`, `user`],
       },

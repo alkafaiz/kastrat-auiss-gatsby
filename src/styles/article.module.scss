@@ -55,6 +55,10 @@
   h6 {
     font-size: 1em;
   }
+  img {
+    max-width: 100%;
+  }
+
   @media (min-width: map-get($map: $grid-breakpoints, $key: md)) {
     p {
       font-size: 1.1em;

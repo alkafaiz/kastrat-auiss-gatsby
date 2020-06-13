@@ -108,7 +108,6 @@ const AuthorTemplate = ({ data }) => {
 
   const articles = data.allStrapiArticle.edges
 
-  console.log(data)
   return (
     <Layout>
       <SEO title={`${username}'s articles`} />
@@ -124,7 +123,7 @@ const AuthorTemplate = ({ data }) => {
                     <SocialButton icon={<InstagramIcon />} url={instagram} />
                   </li>
                 )}
-                {linkedin && (
+                {linkedin !== "" && (
                   <li>
                     <SocialButton icon={<LinkedinIcon />} url={linkedin} />
                   </li>
