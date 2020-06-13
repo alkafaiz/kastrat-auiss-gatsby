@@ -24,7 +24,7 @@ const Layout = ({ children }) => {
     <div className={style.body}>
       <Navbar />
       <main>{children}</main>
-      <Container>
+      <Container style={{ marginTop: "auto" }}>
         <footer className={style.footer}>
           <ReactMarkdown
             source={footerText}

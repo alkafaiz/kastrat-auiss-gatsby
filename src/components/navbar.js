@@ -41,7 +41,7 @@ const NavbarCustom = () => (
             <Link to="/author">Author</Link>
           </Nav.Item>
           <Nav.Item className={`${classes.navItem} nav-link`}>
-            <Link to="/plan">About us</Link>
+            <Link to="/about-us">About us</Link>
           </Nav.Item>
         </Nav>
       </Navbar.Collapse>
