@@ -123,7 +123,7 @@ const AuthorTemplate = ({ data }) => {
                     <SocialButton icon={<InstagramIcon />} url={instagram} />
                   </li>
                 )}
-                {linkedin !== "" && (
+                {linkedin && (
                   <li>
                     <SocialButton icon={<LinkedinIcon />} url={linkedin} />
                   </li>
