@@ -10,6 +10,7 @@ import SEO from "../components/seo"
 import Layout from "../components/layout"
 import { transformToSlug } from "../utils/general.util"
 import style from "../styles/article.module.scss"
+import { Container } from "react-bootstrap"
 
 export const query = graphql`
   query ArticleQuery($id: Int!) {
@@ -21,7 +22,7 @@ export const query = graphql`
       image {
         publicURL
         childImageSharp {
-          fluid(maxWidth: 920) {
+          fluid(maxWidth: 1920) {
             ...GatsbyImageSharpFluid
           }
         }
@@ -63,31 +64,42 @@ const Article = ({ data }) => {
           data-src={article.image.publicURL}
           data-srcset={article.image.publicURL}
           data-uk-img
-        >
-          <h1>{article.title}</h1>
-        </div>
-        <p className={style.articleInfo}>
-          By{" "}
-          <span>
-            <Link to={`/author/${transformToSlug(article.author.username)}`}>
-              {article.author.username}
-            </Link>
-          </span>{" "}
-          on <Moment format="MMMM Do YYYY">{article.created_at}</Moment>
-        </p>
+        ></div>
 
         <Img fluid={article.image.childImageSharp.fluid} />
-        <br />
 
-        <div className="uk-section">
-          <div className="uk-container uk-container-small">
-            <div className={style.section}>
-              <ReactMarkdown source={article.content} />
-            </div>
-          </div>
-        </div>
         <br />
-        <DiscussionEmbed {...disqusConfig} />
+        <Container>
+          <article className={style.articleContainer}>
+            <h1 className={style.title}>{article.title}</h1>
+            <p className={style.articleInfo}>
+              By{" "}
+              <span>
+                <Link
+                  to={`/author/${transformToSlug(article.author.username)}`}
+                >
+                  {article.author.username}
+                </Link>
+              </span>{" "}
+              on <Moment format="MMMM Do YYYY">{article.created_at}</Moment>
+            </p>
+
+            <br />
+
+            <div className="uk-section">
+              <div className="uk-container uk-container-small">
+                <div className={style.section}>
+                  <ReactMarkdown source={article.content} />
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <br />
+          <div className={style.articleContainer}>
+            <DiscussionEmbed {...disqusConfig} />
+          </div>
+        </Container>
       </div>
     </Layout>
   )

@@ -6,26 +6,52 @@
   flex-direction: column;
 
   p {
+    text-align: center;
     color: $text-secondary;
+    font-size: small;
+    span {
+      font-weight: bold;
+    }
+
+    @media (min-width: map-get($map: $grid-breakpoints, $key: lg)) {
+      text-align: left;
+      margin-top: 15px;
+      font-size: 0.9em;
+    }
   }
 }
 
 .contentPrimaryWrapper {
   width: inherit;
   display: flex;
-  justify-content: space-between;
+  flex-flow: column-reverse wrap;
   align-items: center;
+
+  @media (min-width: map-get($map: $grid-breakpoints, $key: lg)) {
+    flex-flow: row-reverse wrap;
+    justify-content: flex-end;
+    align-items: center;
+  }
 }
 
 .contentPrimary {
   display: flex;
   flex-direction: column;
-  h1 {
+  text-align: center;
+  margin: 20px 0;
+  h3 {
     margin-bottom: 10px;
   }
   small {
     color: $text-secondary;
     margin-bottom: 1em;
+  }
+  @media (min-width: map-get($map: $grid-breakpoints, $key: lg)) {
+    text-align: left;
+    margin-left: 20px;
+    h3 {
+      font-size: 2em;
+    }
   }
 }
 
@@ -38,11 +64,17 @@
 }
 
 .social {
-  margin: 0;
+  margin: auto;
   display: flex;
+  padding: 0;
+
   li {
     margin-right: 5px;
     list-style: none;
+  }
+
+  @media (min-width: map-get($map: $grid-breakpoints, $key: lg)) {
+    margin: 0;
   }
 }
 
@@ -56,4 +88,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.articleContainer {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  @media (min-width: map-get($map: $grid-breakpoints, $key: md)) {
+    justify-content: flex-start;
+  }
 }

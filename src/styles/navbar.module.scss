@@ -1,0 +1,37 @@
+@import "./global-variable";
+
+.navbar {
+  margin-bottom: 2em;
+  margin-top: 0.5em;
+  @media (min-width: map-get($map: $grid-breakpoints, $key: lg)) {
+    height: 80px;
+  }
+}
+
+.navbarCollapse {
+  a {
+    color: #3a3a3a !important;
+  }
+}
+
+.navItem {
+  @media (min-width: map-get($map: $grid-breakpoints, $key: lg)) {
+    padding-left: 1em !important;
+    padding-right: 1em !important;
+  }
+}
+
+.logoMobile {
+  height: 50px;
+  margin-bottom: 0;
+  @media (min-width: map-get($map: $grid-breakpoints, $key: md)) {
+    display: none;
+  }
+}
+
+.logoDesktop {
+  display: none;
+  @media (min-width: map-get($map: $grid-breakpoints, $key: md)) {
+    display: block;
+  }
+}

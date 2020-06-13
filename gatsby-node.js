@@ -58,6 +58,7 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
           edges {
               node {
                   id
+                  strapiId
                   username
               }
           }
@@ -72,7 +73,7 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
         path: `/author/${slug}`,
         component: path.resolve("src/templates/author.js"),
         context: {
-          id: node.id,
+          id: node.strapiId,
         },
       })
     })

@@ -8,21 +8,21 @@ import style from "../styles/author-card.module.scss"
 
 const ArticleCard = ({ author, profile, totalArticle, course }) => {
   return (
-    <div className={style.card}>
-      <Link to={`/author/${transformToSlug(author)}`}>
-        <Img fixed={profile} />
-        <div className={style.content}>
-          <h2>{author}</h2>
-          <p>{course}</p>
+    <Link className={style.card} to={`/author/${transformToSlug(author)}`}>
+      <div className={style.profile}>
+        <Img fluid={profile} />
+      </div>
+      <div className={style.content}>
+        <h6>{author}</h6>
+        <p>{course}</p>
 
-          <div className={style.footer}>
-            <p className={style.totalArticle}>
-              {`${totalArticle} article${totalArticle > 1 ? "s" : ""}`}
-            </p>
-          </div>
+        <div className={style.footer}>
+          <p className={style.totalArticle}>
+            {`${totalArticle} article${totalArticle > 1 ? "s" : ""}`}
+          </p>
         </div>
-      </Link>
-    </div>
+      </div>
+    </Link>
   )
 }
 ArticleCard.propTypes = {

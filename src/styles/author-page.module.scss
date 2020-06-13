@@ -1,0 +1,10 @@
+@import "./global-variable";
+
+.authorContainer {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  @media (min-width: map-get($map: $grid-breakpoints, $key: md)) {
+    justify-content: flex-start;
+  }
+}

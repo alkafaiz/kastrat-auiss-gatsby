@@ -1,14 +1,64 @@
 @import "./global-variable";
 
+.articleContainer {
+  @media (min-width: map-get($map: $grid-breakpoints, $key: md)) {
+    padding: 0 10%;
+  }
+  @media (min-width: map-get($map: $grid-breakpoints, $key: lg)) {
+    padding: 0 20%;
+  }
+}
+
+.title {
+  font-weight: medium;
+  font-size: 1.6em;
+  @media (min-width: map-get($map: $grid-breakpoints, $key: md)) {
+    font-size: 2em;
+    line-height: 48px;
+  }
+}
+
 .articleInfo {
   color: $text-secondary;
+  margin-bottom: 1.5em;
   a {
     color: $text-primary;
     text-decoration: none;
   }
+  @media (max-width: map-get($map: $grid-breakpoints, $key: sm)) {
+    font-size: small;
+  }
 }
 
 .section {
-  text-align: justify;
-  line-height: 1.73;
+  //text-align: justify;
+  line-height: 28px;
+  font-size: 1em;
+  p {
+    color: rgb(41, 41, 41);
+  }
+  h1 {
+    font-size: 1.6em;
+  }
+  h2 {
+    font-size: 1.4em;
+  }
+  h3 {
+    font-size: 1.3em;
+  }
+  h4 {
+    font-size: 1.2em;
+  }
+  h3 {
+    font-size: 1.1em;
+  }
+  h6 {
+    font-size: 1em;
+  }
+  @media (min-width: map-get($map: $grid-breakpoints, $key: md)) {
+    p {
+      font-size: 1.1em;
+      line-height: 40px;
+    }
+  }
 }

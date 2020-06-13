@@ -4,14 +4,15 @@ import Img from "gatsby-image"
 
 import SEO from "../components/seo"
 import Layout from "../components/layout"
-import ArticleAuthorCard from "../components/article-author-card"
+import ArticleCard from "../components/article-card"
 import style from "../styles/author.module.scss"
 
 import DefaultProfile from "../components/default-profile"
+import { Container } from "react-bootstrap"
 
 export const query = graphql`
-  query UserTemplate($id: String!) {
-    strapiUser(id: { eq: $id }) {
+  query UserTemplate($id: Int!) {
+    strapiUser(strapiId: { eq: $id }) {
       id
       username
       bio
@@ -26,16 +27,23 @@ export const query = graphql`
           }
         }
       }
-      articles {
-        id
-        title
-        content
-        excerpt
-        published_date
-        image {
-          childImageSharp {
-            fixed(width: 350, height: 200) {
-              ...GatsbyImageSharpFixed
+    }
+    allStrapiArticle(
+      filter: { author: { id: { eq: $id } } }
+      sort: { order: DESC, fields: published_date }
+    ) {
+      edges {
+        node {
+          id
+          title
+          content
+          excerpt
+          published_date
+          image {
+            childImageSharp {
+              fixed(width: 300, height: 170) {
+                ...GatsbyImageSharpFixed
+              }
             }
           }
         }
@@ -88,7 +96,7 @@ const TwitterIcon = () => (
 
 const AuthorTemplate = ({ data }) => {
   const {
-    articles,
+    //articles,
     username,
     bio,
     course,
@@ -97,65 +105,84 @@ const AuthorTemplate = ({ data }) => {
     linkedin,
     twitter,
   } = data.strapiUser
+
+  const articles = data.allStrapiArticle.edges
+
+  console.log(data)
   return (
     <Layout>
       <SEO title={`${username}'s articles`} />
-      <div className={style.profile}>
-        <div className={style.contentPrimaryWrapper}>
-          <div className={style.contentPrimary}>
-            <h1>{username}</h1>
-            <small>{course}</small>
-            <ul className={style.social}>
-              {instagram && (
-                <li>
-                  <SocialButton icon={<InstagramIcon />} url={instagram} />
-                </li>
+      <Container>
+        <div className={style.profile}>
+          <div className={style.contentPrimaryWrapper}>
+            <div className={style.contentPrimary}>
+              <h3>{username}</h3>
+              <small>{course}</small>
+              <ul className={style.social}>
+                {instagram && (
+                  <li>
+                    <SocialButton icon={<InstagramIcon />} url={instagram} />
+                  </li>
+                )}
+                {linkedin && (
+                  <li>
+                    <SocialButton icon={<LinkedinIcon />} url={linkedin} />
+                  </li>
+                )}
+                {twitter && (
+                  <li>
+                    <SocialButton icon={<TwitterIcon />} url={twitter} />
+                  </li>
+                )}
+              </ul>
+            </div>
+            <div className={style.profilePicture}>
+              {profile ? (
+                <Img fixed={profile.childImageSharp.fixed} />
+              ) : (
+                <DefaultProfile />
               )}
-              {linkedin && (
-                <li>
-                  <SocialButton icon={<LinkedinIcon />} url={linkedin} />
-                </li>
-              )}
-              {twitter && (
-                <li>
-                  <SocialButton icon={<TwitterIcon />} url={twitter} />
-                </li>
-              )}
-            </ul>
+            </div>
           </div>
-          <div className={style.profilePicture}>
-            {profile ? (
-              <Img fixed={profile.childImageSharp.fixed} />
-            ) : (
-              <DefaultProfile />
-            )}
-          </div>
+          <p>
+            <span>{`About ${username.split(" ")[0]}`}</span>
+            <br />
+            {bio}
+          </p>
         </div>
-        <p>{bio}</p>
-      </div>
-      <br />
-      <hr />
+        <br />
+        <hr />
 
-      <h2>{`${articles.length} article${articles.length > 1 ? "s" : ""} by ${
-        username.split(" ")[0]
-      }`}</h2>
+        <h6>{`${articles.length} article${articles.length > 1 ? "s" : ""} by ${
+          username.split(" ")[0]
+        }`}</h6>
+        <br />
 
-      <ul style={{ margin: 0 }}>
-        {articles.map(article => {
-          const { id, title, excerpt, published_date, content, image } = article
-          return (
-            <li key={id} style={{ listStyle: "none", margin: 0, padding: 0 }}>
-              <ArticleAuthorCard
-                title={title}
-                image={image.childImageSharp.fixed}
-                published_date={published_date}
-                content={content}
-                excerpt={excerpt}
-              />
-            </li>
-          )
-        })}
-      </ul>
+        <ul className={style.articleContainer}>
+          {articles.map(article => {
+            const {
+              id,
+              title,
+              excerpt,
+              published_date,
+              content,
+              image,
+            } = article.node
+            return (
+              <li key={id} style={{ listStyle: "none", margin: 0, padding: 0 }}>
+                <ArticleCard
+                  title={title}
+                  image={image.childImageSharp.fixed}
+                  published_date={published_date}
+                  content={content}
+                  excerpt={excerpt}
+                  author={username}
+                />
+              </li>
+            )
+          })}
+        </ul>
+      </Container>
     </Layout>
   )
 }
