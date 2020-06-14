@@ -1,6 +1,10 @@
 <p align="center">
   <a href="https://www.instagram.com/auiss_official/">
-    <img alt="Kastrat_Auiss" src="https://res.cloudinary.com/alkafaiz-cloudinary/image/upload/v1592043221/auiss-logo_z1vch1.png" width="60" />
+    <img alt="Kastrat_Auiss" src="https://res.cloudinary.com/alkafaiz-cloudinary/image/upload/v1592043221/auiss-logo_z1vch1.png" height="80" />
+  </a>
+  &emsp;
+  <a href="https://strapi.io/">
+    <img alt="Gatsby" src="https://www.gatsbyjs.org/monogram.svg" height="80" />
   </a>
 </p>
 <h1 align="center">
@@ -21,10 +25,12 @@ This repo is the front part of Kastrat Auiss blog built with Gatsby.
 
 1.  **Start developing.**
 
-    Navigate into the directory and start it up.
+    Navigate into the directory, install dependencies, and start it up.
 
     ```shell
     cd kastrat-auiss-gatsby/
+    npm install
+    # or yarn install
     gatsby develop
     ```
 
