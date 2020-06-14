@@ -23,8 +23,17 @@ const Logo = () => {
           }
         }
       }
+      allStrapiUser {
+        edges {
+          node {
+            id
+          }
+        }
+      }
     }
   `)
+
+  // console.log(data)
 
   return <Img fixed={data.placeholderImage.childImageSharp.fixed} />
 }
