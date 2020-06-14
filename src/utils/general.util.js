@@ -5,3 +5,16 @@ exports.transformToSlug = (rawString = "Some Name") => {
 
   return slug
 }
+
+exports.longStringHelper = str => {
+  const sliceBoundary = str => str.substr(0, str.lastIndexOf(" "))
+  const truncate = (n, useWordBoundary) =>
+    str.length <= n
+      ? str
+      : `${
+          useWordBoundary
+            ? sliceBoundary(str.slice(0, n - 1))
+            : str.substr(0, n - 1)
+        }…`
+  return { full: str, truncate }
+}

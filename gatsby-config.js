@@ -3,6 +3,8 @@ module.exports = {
     title: `Kastrat AUISS`,
     description: `Articles published by Strategic Research Department of Asia Pacific University Indonesian Student Society.`,
     author: `@alkafaiz`,
+    keywords: ["kastrat", "APU", "AUISS", "Asia Pacific University"],
+    siteUrl: "https://kastrat-auiss.netlify.app",
   },
   plugins: [
     {
@@ -29,11 +31,11 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `Kastrat Auiss`,
+        short_name: `Kastrat Auiss`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#8b2e2e`,
+        theme_color: `#8b2e2e`,
         display: `minimal-ui`,
         icon: `src/images/auiss-icon.png`, // This path is relative to the root of the site.
       },

@@ -8,7 +8,7 @@ import { DiscussionEmbed } from "disqus-react"
 
 import SEO from "../components/seo"
 import Layout from "../components/layout"
-import { transformToSlug } from "../utils/general.util"
+import { transformToSlug, longStringHelper } from "../utils/general.util"
 import style from "../styles/article.module.scss"
 import { Container } from "react-bootstrap"
 
@@ -18,12 +18,18 @@ export const query = graphql`
       strapiId
       title
       content
+      excerpt
       created_at
       image {
         publicURL
         childImageSharp {
           fluid(maxWidth: 1920) {
             ...GatsbyImageSharpFluid
+          }
+          resize(width: 400) {
+            src
+            height
+            width
           }
         }
       }
@@ -36,9 +42,16 @@ export const query = graphql`
 
 const Article = ({ data }) => {
   const article = data.strapiArticle
+
+  const articleSlug = transformToSlug(article.title)
+
   const disqusConfig = {
     shortname: process.env.GATSBY_DISQUS_NAME,
-    config: { identifier: transformToSlug(article.title) },
+    config: {
+      url: `https://kastrat-auiss.netlify.app/${articleSlug}`,
+      title: article.title,
+      identifier: articleSlug,
+    },
   }
 
   React.useEffect(() => {
@@ -55,7 +68,12 @@ const Article = ({ data }) => {
 
   return (
     <Layout>
-      <SEO title={article.title} />
+      <SEO
+        title={article.title}
+        description={longStringHelper(article.excerpt).truncate(160, 1)}
+        image={article.image.childImageSharp.resize}
+        pathname={window.location.pathname}
+      />
       <div>
         <div
           id="banner"
@@ -68,6 +86,7 @@ const Article = ({ data }) => {
         <Img fluid={article.image.childImageSharp.fluid} />
 
         <br />
+
         <Container>
           <article className={style.articleContainer}>
             <h1 className={style.title}>{article.title}</h1>
