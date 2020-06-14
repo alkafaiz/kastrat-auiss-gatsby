@@ -73,6 +73,7 @@ const Article = ({ data }) => {
         description={longStringHelper(article.excerpt).truncate(160, 1)}
         image={article.image.childImageSharp.resize}
         pathname={`/${articleSlug}`}
+        type="article"
       />
       <div>
         <div
