@@ -47,7 +47,7 @@ export const pageQuery = graphql`
           profile {
             id
             childImageSharp {
-              fluid(maxWidth: 300) {
+              fluid(maxWidth: 100, maxHeight: 100) {
                 ...GatsbyImageSharpFluid
               }
             }
