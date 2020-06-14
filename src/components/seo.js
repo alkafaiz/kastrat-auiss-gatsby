@@ -61,6 +61,10 @@ function SEO({ description, lang, meta, image: metaImage, title, pathname }) {
           content: site.siteMetadata.keywords.join(","),
         },
         {
+          property: `type`,
+          content: `article`,
+        },
+        {
           property: `og:title`,
           content: title,
         },
@@ -70,7 +74,7 @@ function SEO({ description, lang, meta, image: metaImage, title, pathname }) {
         },
         {
           property: `og:type`,
-          content: `website`,
+          content: `article`,
         },
         // {
         //   name: `twitter:card`,
